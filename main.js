@@ -7,13 +7,18 @@ function createWindow () {
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    frame: false,
+    autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
     }
   })
 
   // and load the index.html of the app.
+  mainWindow.setMenuBarVisibility(false)
   mainWindow.loadURL('http://localhost:3005/viewer.html')
+  mainWindow.setMenu(null)
+  mainWindow.removeMenu()
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
